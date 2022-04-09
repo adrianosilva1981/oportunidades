@@ -1,1 +1,74 @@
-oportunidades
+<div class="uk-flex uk-flex-between">
+    <div>
+        <h4>Oportunidades</h4>
+    </div>
+    <div>
+        <a href="nova-oportunidade">+ nova</a>
+    </div>
+</div>
+
+<div class="uk-container uk-container-xsmall" ng-init="getOppts()">
+    <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-small uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Produto</th>
+                    <th>Vendedor</th>
+                    <th>Comprador</th>
+                    <th>Oferta ($)</th>
+                    <th>Status (clique para editar)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, oportunidade) in oppts">
+                    <td>{{ oportunidade.product_id }}</td>
+                    <td>{{ oportunidade.seller_id }}</td>
+                    <td>{{ oportunidade.buyer_id }}</td>
+                    <td>{{ oportunidade.offer }}</td>
+                    <td>
+                        <div style="color: #666;">
+                            <a ng-click="setOpt(oportunidade)" href="#modal-center" uk-toggle>
+                                <span ng-if="oportunidade.approved === '0'">rejeitada</span>
+                                <span ng-if="oportunidade.approved === '1'">aprovada</span>
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div id="modal-center" class="uk-flex-top" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body uk-margin-auto-vertical">
+        <button class="uk-modal-close-default" type="button" uk-close></button>
+        <div class="uk-text-secondary">
+            <h4 class="uk-text-secondary">Alterar status</h4>
+            <ul class="uk-list uk-list-divider">
+                <li><b>Produto:</b> {{ oppt.product_id }}</li>
+                <li><b>Vendedor:</b> {{ oppt.seller_id }}</li>
+                <li><b>Comprador:</b> {{ oppt.buyer_id }}</li>
+                <li><b>Oferta:</b> {{ oppt.offer }}</li>
+                <li><b>Mensagem:</b> {{ oppt.message }}</li>
+                <li><b>Aprovada?:</b>
+                    <span ng-if="oppt.approved === '0'">Não</span>
+                    <span ng-if="oppt.approved === '1'">Sim</span>
+                </li>
+            </ul>
+
+            <div><b></b>Alterar status:</div>
+            <div class="uk-child-width-expand@m" uk-grid>
+                <div class="uk-width-1-2">
+                    <select class="uk-input uk-form-small uk-width-1-1" ng-model="newStatus">
+                        <option value="0">Rejeitar</option>
+                        <option value="1">Aprovar</option>
+                    </select>
+                </div>
+                <div>
+                    <a class="uk-button uk-button-small uk-button-primary" ng-click="changeStatus(oppt.id)">Alterar</a>
+                </div>
+            </div>
+            <div></div>
+        </div>
+    </div>
+</div>

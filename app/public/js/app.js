@@ -15,6 +15,14 @@ app.config(function($routeProvider, $locationProvider) {
                 templateUrl: 'templates/oportunidades.html',
                 controller: 'oportunidadeController'
             })
+            .when('/nova-oportunidade', {
+                templateUrl: 'templates/nova-oportunidade.html',
+                controller: 'oportunidadeController'
+            })
+            .when('/oportunidade/:id', {
+                templateUrl: 'templates/nova-oportunidade.html',
+                controller: 'oportunidadeController'
+            })
             .when('/usuarios', {
                 templateUrl: 'templates/usuarios.html',
                 controller: 'usuarioController'
@@ -26,7 +34,20 @@ app.config(function($routeProvider, $locationProvider) {
             .when('/novo-usuario', {
                 templateUrl: 'templates/novo-usuario.html',
                 controller: 'usuarioController'
-            }).otherwise({
+            })
+            .when('/produtos', {
+                templateUrl: 'templates/produtos.html',
+                controller: 'produtoController'
+            })
+            .when('/produtos/:id', {
+                templateUrl: 'templates/novo-produto.html',
+                controller: 'produtoController'
+            })
+            .when('/novo-produto', {
+                templateUrl: 'templates/novo-produto.html',
+                controller: 'produtoController'
+            })
+            .otherwise({
                 redirectTo: '/'
             });
     } else {

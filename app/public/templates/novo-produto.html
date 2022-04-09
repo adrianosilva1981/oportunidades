@@ -1,0 +1,39 @@
+<div class="uk-container uk-container-xsmall" ng-init="getProduct()">
+    <h4><span ng-if="!id">Novo</span><span ng-if="id">Editar</span> produto</h4>
+
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.name" placeholder="Nome">
+    </div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.category" placeholder="Categoria">
+    </div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.value" placeholder="Valor">
+    </div>
+    <div class="uk-margin">
+        <select class="uk-input uk-form-small uk-width-1-1" ng-options="user as user.name for user in users track by user.id" ng-model="form.user_id">
+            <option value="">-- Vendedor --</option>
+        </select>
+    </div>
+    <div class="uk-margin">
+        <select class="uk-input uk-form-small uk-width-1-1" ng-model="form.status">
+            <option value="">-- Tipo --</option>
+            <option value="1">Disponível</option>
+            <option value="0">Indisponível</option>
+        </select>
+    </div>
+    <div class="uk-flex uk-flex-center">
+        <div>
+            <a class="uk-button uk-button-small uk-button-primary" ng-click="save()">salvar</a>
+        </div>
+    </div>
+    <div class="uk-flex uk-flex-center uk-margin" ng-show="loading">
+        <div class="uk-margin">
+            <span uk-spinner></span>
+        </div>
+    </div>
+    <div class="uk-alert-warning uk-margin" uk-alert ng-show="warning">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ message }}</p>
+    </div>
+</div>

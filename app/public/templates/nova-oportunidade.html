@@ -1,0 +1,46 @@
+<div class="uk-container uk-container-xsmall" ng-init="getOppt()">
+    <h4><span ng-if="!id">Nova</span><span ng-if="id">Editar</span> oportunidade</h4>
+
+    <div class="uk-margin">
+        <select class="uk-input uk-form-small uk-width-1-1" ng-options="product as product.name for product in products track by product.id" ng-model="form.product_id">
+            <option value="">-- Produto --</option>
+        </select>
+    </div>
+    <div class="uk-margin">
+        <select class="uk-input uk-form-small uk-width-1-1" ng-options="seller as seller.name for seller in sellers track by seller.id" ng-model="form.seller_id">
+            <option value="">-- Vendedor --</option>
+        </select>
+    </div>
+    <div class="uk-margin">
+        <select class="uk-input uk-form-small uk-width-1-1" ng-options="buyer as buyer.name for buyer in buyers track by buyer.id" ng-model="form.buyer_id">
+            <option value="">-- Comprador --</option>
+        </select>
+    </div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.offer" placeholder="Oferta">
+    </div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.message" placeholder="Mensagem">
+    </div>
+    <div class="uk-margin">
+        <select class="uk-input uk-form-small uk-width-1-1" ng-model="form.approved">
+            <option value="">-- Aprovada? --</option>
+            <option value="1">Sim</option>
+            <option value="0">Não</option>
+        </select>
+    </div>
+    <div class="uk-flex uk-flex-center">
+        <div>
+            <a class="uk-button uk-button-small uk-button-primary" ng-click="save()">salvar</a>
+        </div>
+    </div>
+    <div class="uk-flex uk-flex-center uk-margin" ng-show="loading">
+        <div class="uk-margin">
+            <span uk-spinner></span>
+        </div>
+    </div>
+    <div class="uk-alert-warning uk-margin" uk-alert ng-show="warning">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ message }}</p>
+    </div>
+</div>

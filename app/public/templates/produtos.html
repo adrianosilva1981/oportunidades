@@ -1,0 +1,33 @@
+<div class="uk-flex uk-flex-between">
+    <div>
+        <h4>Produtos</h4>
+    </div>
+    <div>
+        <a href="novo-produto">+ novo</a>
+    </div>
+</div>
+
+<div class="uk-container uk-container-xsmall" ng-init="getProducts()">
+    <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-small uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Categoria</th>
+                    <th>Valor</th>
+                    <th>Status</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, product) in products">
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.category }}</td>
+                    <td>{{ product.value }}</td>
+                    <td>{{ product.status }}</td>
+                    <td><a href="produtos/{{ product.id }}">editar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
