@@ -1,0 +1,34 @@
+<div class="uk-container uk-container-xsmall" ng-init="getUser()">
+    <h4><span ng-if="!id">Novo</span><span ng-if="id">Editar</span> usuário</h4>
+
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.name" placeholder="Nome">
+    </div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.email" placeholder="Email" ng-if="!id">
+    </div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="password" ng-model="form.password" placeholder="Senha" ng-if="!id">
+    </div>
+    <div class="uk-margin">
+        <select class="uk-input uk-form-small uk-width-1-1" ng-model="form.type">
+            <option value="">-- Tipo --</option>
+            <option value="seller">Vendedor</option>
+            <option value="buyer">Comprador</option>
+        </select>
+    </div>
+    <div class="uk-flex uk-flex-center">
+        <div>
+            <a class="uk-button uk-button-small uk-button-primary" ng-click="save()">salvar</a>
+        </div>
+    </div>
+    <div class="uk-flex uk-flex-center uk-margin" ng-show="loading">
+        <div class="uk-margin">
+            <span uk-spinner></span>
+        </div>
+    </div>
+    <div class="uk-alert-warning uk-margin" uk-alert ng-show="warning">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ message }}</p>
+    </div>
+</div>

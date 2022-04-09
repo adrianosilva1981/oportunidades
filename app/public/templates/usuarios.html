@@ -1,0 +1,29 @@
+<div class="uk-flex uk-flex-between">
+    <div>
+        <h4>Usuários</h4>
+    </div>
+    <div>
+        <a href="novo-usuario">+ novo</a>
+    </div>
+</div>
+
+<div class="uk-container uk-container-xsmall" ng-init="getUsers()">
+    <div class="uk-overflow-auto">
+        <table class="uk-table uk-table-small uk-table-divider">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>#</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="(key, user) in users">
+                    <td>{{ user.name }}</td>
+                    <td>{{ user.email }}</td>
+                    <td><a href="usuario/{{ user.id }}">editar</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

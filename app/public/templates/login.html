@@ -1,0 +1,27 @@
+<div class="uk-container uk-container-xsmall">
+    <h4>Login</h4>
+
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="text" ng-model="form.email" placeholder="Email">
+    </div>
+    <div class="uk-margin">
+        <input class="uk-input uk-form-small uk-width-1-1" type="password" ng-model="form.password" placeholder="Senha">
+    </div>
+
+    <div class="uk-flex uk-flex-center">
+        <div>
+            <a class="uk-button uk-button-small uk-button-primary" ng-click="login()">login</a>
+        </div>
+    </div>
+
+    <div class="uk-flex uk-flex-center uk-margin" ng-show="loading">
+        <div class="uk-margin">
+            <span uk-spinner></span>
+        </div>
+    </div>
+
+    <div class="uk-alert-warning uk-margin" uk-alert ng-show="warning">
+        <a class="uk-alert-close" uk-close></a>
+        <p>{{ message }}</p>
+    </div>
+</div>
