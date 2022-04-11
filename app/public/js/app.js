@@ -1,6 +1,8 @@
 var app = angular.module('opportunityAPP', ['ngRoute']);
 var openSidebar = false;
 var token = null
+var api = 'http://localhost:8000/api'
+var appDomain = 'http://localhost:3000'
 
 app.config(function($routeProvider, $locationProvider) {
     token = localStorage.getItem('token')
