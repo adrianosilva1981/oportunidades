@@ -13,6 +13,7 @@
 * Executar `php artisan jwt:secret` para gerar o JWT secret no .env
 * `php artisan migrate`
 * Subindo o serviço: `php artisan serve`
+* Crie um usuário através do Postman usando a collection `Users`, na request `create` (`[POST]/api/users/`)
 
 ### Na pasta `app` executar:
 

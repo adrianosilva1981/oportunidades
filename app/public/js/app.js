@@ -69,13 +69,22 @@ app.config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
 });
 
-app.run(function($rootScope, $location) {
+app.run(function($rootScope, $location, $window) {
     $rootScope.$on("$locationChangeStart", function(event, next, current) {
-        if (openSidebar) {
-            $("#sidebar .content").hide();
-            openSidebar = false;
+        const token = parseJwt(localStorage.getItem('token'))
+        if (token.exp < (new Date().getTime()) / 1000) {
+            localStorage.removeItem('token')
+            $window.location.href = appDomain
         }
     });
+
+    const parseJwt = (token) => {
+        try {
+            return JSON.parse(atob(token.split('.')[1]));
+        } catch (e) {
+            return null;
+        }
+    };
 });
 
 $('#open-side-bar').click(() => {
