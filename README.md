@@ -10,6 +10,7 @@
 
 * `composer install`
 * criar o `.env` com as credenciais do `docker-compose.yml`
+* Executar `php artisan jwt:secret` para gerar o JWT secret no .env
 * `php artisan migrate`
 * Subindo o serviço: `php artisan serve`
 
