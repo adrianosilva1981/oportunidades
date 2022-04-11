@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Response;
 use App\Models\Opportunity;
-
+use Illuminate\Support\Facades\DB;
 
 class OpportunityController extends Controller
 {
@@ -30,7 +30,13 @@ class OpportunityController extends Controller
     {
         try {
             $input = $request->all();
-            $opportunities = Opportunity::orderBy('created_at', 'DESC')->paginate((int)$_ENV['PAGE_ROWS']);
+
+            $opportunities = Opportunity::with([
+                'sellers' => function($query) { $query->select(['id', 'name']); },
+                'buyers' => function($query) { $query->select(['id', 'name']); },
+                'products' => function($query) { $query->select(['id', 'name']); },
+            ])->orderBy('created_at', 'DESC')->get();
+
             return response()->json($opportunities, Response::HTTP_OK);
         } catch (ValidationException $validationException) {
             return response()->json(['message' => $validationException->getMessage()], Response::HTTP_UNPROCESSABLE_ENTITY);

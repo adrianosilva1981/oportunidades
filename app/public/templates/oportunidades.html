@@ -21,9 +21,9 @@
             </thead>
             <tbody>
                 <tr ng-repeat="(key, oportunidade) in oppts">
-                    <td>{{ oportunidade.product_id }}</td>
-                    <td>{{ oportunidade.seller_id }}</td>
-                    <td>{{ oportunidade.buyer_id }}</td>
+                    <td>{{ oportunidade.products[0].name }}</td>
+                    <td>{{ oportunidade.sellers[0].name }}</td>
+                    <td>{{ oportunidade.buyers[0].name }}</td>
                     <td>{{ oportunidade.offer }}</td>
                     <td>
                         <div style="color: #666;">

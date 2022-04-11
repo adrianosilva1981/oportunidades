@@ -17,4 +17,19 @@ class Opportunity extends Model
         'message',
         'approved',
     ];
+
+    public function sellers()
+    {
+        return $this->hasMany(User::class, 'id', 'seller_id')->where('type', 'seller');
+    }
+
+    public function buyers()
+    {
+        return $this->hasMany(User::class, 'id', 'buyer_id')->where('type', 'buyer');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(Products::class, 'id', 'product_id');
+    }
 }

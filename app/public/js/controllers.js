@@ -47,7 +47,7 @@ app.controller('oportunidadeController', function($scope, $http, $timeout, $rout
         $http.defaults.headers.common.Authorization = `Bearer ${token}`
         $http.get(`${api}/opportunities`).then(
             (response) => {
-                $scope.oppts = response.data.data
+                $scope.oppts = response.data
             },
             (error) => {
                 console.log(error)
