@@ -12,6 +12,16 @@ use App\Models\Products;
 class ProductController extends Controller
 {
     /**
+     * Create a new ProductController instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth:api', []);
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
