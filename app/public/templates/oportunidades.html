@@ -7,6 +7,27 @@
     </div>
 </div>
 
+<div class="uk-margin">
+    <label>Filtro</label>
+    <div class="uk-child-width-expand@m" uk-grid>
+        <div>
+            <input class="uk-input uk-form-small" type="text" placeholder="Produto" ng-model="filter.product" ng-keyup="searchOppt()">
+        </div>
+        <div>
+            <input class="uk-input uk-form-small" type="text" placeholder="Vendedor" ng-model="filter.seller" ng-keyup="searchOppt()">
+        </div>
+        <div>
+            <input class="uk-input uk-form-small" type="text" placeholder="Comprador" ng-model="filter.buyer" ng-keyup="searchOppt()">
+        </div>
+        <div>
+            <select class="uk-input uk-form-small uk-width-1-1" ng-model="filter.approved" ng-change="searchOppt()">
+                <option value="">Status</option>
+                <option value="1">Aprovada</option>
+                <option value="0">Rejeitada</option>
+            </select>
+        </div>
+    </div>
+</div>
 <div class="uk-container uk-container-xsmall" ng-init="getOppts()">
     <div class="uk-overflow-auto">
         <table class="uk-table uk-table-small uk-table-divider">

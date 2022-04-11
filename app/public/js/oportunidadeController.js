@@ -1,5 +1,6 @@
 app.controller('oportunidadeController', function($scope, $http, $timeout, $routeParams) {
     $scope.oppts = []
+    $scope.opptsReadOnly = []
     $scope.id = $routeParams.id || 0
     $scope.warning = false
     $scope.message = ''
@@ -8,6 +9,12 @@ app.controller('oportunidadeController', function($scope, $http, $timeout, $rout
     $scope.newStatus = null
 
     $scope.form = {}
+    $scope.filter = {
+        product: '',
+        seller: '',
+        buyer: '',
+        approved: '',
+    }
 
     $scope.setOpt = (oppt) => {
         $scope.oppt = oppt
@@ -19,6 +26,7 @@ app.controller('oportunidadeController', function($scope, $http, $timeout, $rout
         $http.get(`${api}/opportunities`).then(
             (response) => {
                 $scope.oppts = response.data
+                $scope.opptsReadOnly = response.data
             },
             (error) => {
                 console.log(error)
@@ -124,5 +132,17 @@ app.controller('oportunidadeController', function($scope, $http, $timeout, $rout
                 console.log(error)
             }
         )
+    }
+
+
+    $scope.searchOppt = () => {
+        $scope.oppts = $scope.opptsReadOnly.filter((el) => {
+            return (
+                el.products[0].name.toLowerCase().indexOf($scope.filter.product.toLowerCase()) !== -1 &&
+                el.sellers[0].name.toLowerCase().indexOf($scope.filter.seller.toLowerCase()) !== -1 &&
+                el.buyers[0].name.toLowerCase().indexOf($scope.filter.buyer.toLowerCase()) !== -1 &&
+                ((el.approved == $scope.filter.approved) || $scope.filter.approved == '')
+            )
+        })
     }
 });
